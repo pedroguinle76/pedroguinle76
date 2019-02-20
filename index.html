@@ -14,9 +14,26 @@
 
     <!-- Custom styles for this template -->
     <link href="css/jumbotron.css" rel="stylesheet">
+
+    <!-- ouibounce fonts e CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/ouibounce.css">
+
+    <!-- Load jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+        <!-- Add OuiBounce JS -->
+            <script src="js/ouibounce.js"></script>
+
   </head>
 
   <body>
+    <script type="text/javascript">
+    mixpanel.track('Page Viewed', {
+      'Page Title': document.title,
+      'url':window.location.pathname
+    });
+    </script>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -135,5 +152,51 @@
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    <!-- OuiBounce popup -->
+        <div id="ouibounce-popup">
+          <div class="underlay"></div>
+          <div class="popup">
+            <div class="popup-title">
+              <h3>Já está indo embora?</h3>
+            </div>
+
+            <div class="popup-body">
+              <p>Inscreva-se no nosso curso e receba as nossas newsletters.</p>
+
+
+              <form>
+                <input type="text" placeholder="you@email.com">
+                <input type="submit" value="Cadastre-se">
+                <!--<p class="form-notice">*this is a fake form</p>-->
+              </form>
+            </div>
+
+            <div class="popup-footer">
+              <p>não obrigado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example page JS        -->
+        <!-- Used to fire the popup -->
+        <script>
+          // if you want to use the 'fire' or 'disable' fn,
+          // you need to save OuiBounce to an object
+          var _ouibounce = ouibounce(document.getElementById('ouibounce-popup'), {
+            aggressive: true,
+            timer: 0,
+            callback: function() { console.log('ouibounce fired!'); }
+          });
+          $('body').on('click', function() {
+            $('#ouibounce-popup').hide();
+          });
+          $('#ouibounce-popup .popup-footer').on('click', function() {
+            $('#ouibounce-popup').hide();
+          });
+          $('#ouibounce-popup .popup').on('click', function(e) {
+            e.stopPropagation();
+          });
+        </script>
   </body>
 </html>
