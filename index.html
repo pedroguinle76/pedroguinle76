@@ -118,13 +118,33 @@
           <div class="col-md-6">
             <h2>Curso de Ecommerce</h2>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">Saiba Mais &raquo;</a></p>
+            <p><a class="btn btn-secondary" onclick="botao_aula()" href="/curso_ecommerce.html" role="button">Saiba Mais &raquo;</a></p>
+
+            <script type="text/javascript">
+            function botao_aula() {
+              mixpanel.track('Clique Botao',{
+                'Tipo': 'Aulas online',
+                'url':window.location.pathname
+              });
+            }
+            </script>
+
           </div>
           <div class="col-md-6">
             <h2>Curso de Growth Marketing</h2>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 
-            <p><a class="btn btn-secondary" href="#" role="button">Saiba Mais &raquo;</a></p>
+            <p><a class="btn btn-secondary" onClick="botao_growth()" href="/curso_growth.html" role="button">Saiba Mais &raquo;</a></p>
+
+            <script type="text/javascript">
+            function botao_growth(){
+              mixpanel.track('Clique Botao',{
+                'Tipo':'Growth',
+                'url':window.location.pathname
+              });
+            }
+            </script>
+
           </div>
 
         </div>
